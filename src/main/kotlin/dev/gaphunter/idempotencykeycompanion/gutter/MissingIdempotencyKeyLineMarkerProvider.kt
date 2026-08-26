@@ -8,6 +8,7 @@ import com.intellij.psi.PsiElement
 import dev.gaphunter.idempotencykeycompanion.detect.JavaEndpointFinder
 import dev.gaphunter.idempotencykeycompanion.detect.KotlinEndpointFinder
 import dev.gaphunter.idempotencykeycompanion.model.MissingIdempotencyKeyHit
+import dev.gaphunter.idempotencykeycompanion.review.ReviewPrompt
 
 /**
  * Warning icon on the method name of any Spring MVC POST/PUT endpoint
@@ -35,6 +36,10 @@ class MissingIdempotencyKeyLineMarkerProvider : LineMarkerProviderDescriptor(), 
         for (element in elements) {
             val hit = hitsByElement[element] ?: continue
             result.add(buildMarker(hit))
+
+            val path = file.virtualFile?.path ?: continue
+            val lineNumber = file.viewProvider.document?.getLineNumber(element.textRange.startOffset) ?: -1
+            ReviewPrompt.recordHit(file.project, "$path:$lineNumber")
         }
     }
 
