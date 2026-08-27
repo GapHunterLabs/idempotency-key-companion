@@ -15,7 +15,7 @@ import dev.gaphunter.idempotencykeycompanion.review.ReviewPrompt
  * with no `@RequestHeader` parameter that looks like an idempotency
  * key -- both finders already hand back a real name-identifier leaf
  * (`PsiMethod.nameIdentifier`/`KtNamedFunction.nameIdentifier`), so no
- * extra leaf-descent is needed here (`SDK_GOTCHAS.md` §20).
+ * extra leaf-descent is needed here.
  */
 class MissingIdempotencyKeyLineMarkerProvider : LineMarkerProviderDescriptor(), DumbAware {
 
