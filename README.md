@@ -29,8 +29,9 @@ a code-review-only discipline today, easy to forget on a new endpoint.
 
 Spring MVC only (not JAX-RS or other frameworks). The idempotency-key
 parameter is recognized by its `@RequestHeader` name containing
-"idempotency" (case-insensitive) — a team using a differently-named
-header convention isn't covered yet.
+"idempotency" or "idempotence" (case-insensitive, both real spellings
+teams actually use) — a team using a differently-named header
+convention entirely (e.g. `Client-Request-Token`) isn't covered yet.
 
 ## Usage
 

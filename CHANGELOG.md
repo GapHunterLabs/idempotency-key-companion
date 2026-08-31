@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+## [0.2.0]
+
+### Added
+
+- Recognizes "Idempotence-Key" (and any header name containing
+  "idempotence") as satisfying the check, alongside the existing
+  "idempotency" match -- both are real spellings teams use.
+
 ## [0.1.1]
 
 ### Added
@@ -24,6 +32,7 @@
 - 100% static PSI analysis, Java and Kotlin, no network calls, no
   telemetry. Free.
 
-[Unreleased]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/idempotency-key-companion/commits/0.1.0
