@@ -50,7 +50,7 @@ object KotlinEndpointFinder {
                 val simpleName = entry.shortName?.asString() ?: continue
                 if (simpleName != "RequestHeader") continue
                 val headerName = argumentText(entry, "value") ?: argumentText(entry, "name") ?: parameter.name
-                if (headerName?.contains("idempotency", ignoreCase = true) == true) return true
+                if (looksLikeIdempotencyHeaderName(headerName)) return true
             }
         }
         return false
@@ -62,5 +62,12 @@ object KotlinEndpointFinder {
         if (named != null) return named.getArgumentExpression()?.text
         if (name != "value") return null
         return entry.valueArguments.firstOrNull { it.getArgumentName() == null }?.getArgumentExpression()?.text
+    }
+
+    /** Matches "idempotency" (Stripe's own header name) and "idempotence" (the other real spelling), same as [JavaEndpointFinder]. */
+    private fun looksLikeIdempotencyHeaderName(headerName: String?): Boolean {
+        if (headerName == null) return false
+        return headerName.contains("idempotency", ignoreCase = true) ||
+            headerName.contains("idempotence", ignoreCase = true)
     }
 }

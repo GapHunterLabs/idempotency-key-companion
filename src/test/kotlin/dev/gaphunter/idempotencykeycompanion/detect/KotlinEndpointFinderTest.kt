@@ -33,6 +33,19 @@ class KotlinEndpointFinderTest : BasePlatformTestCase() {
         assertTrue(KotlinEndpointFinder.findAll(file).isEmpty())
     }
 
+    fun `test a PostMapping with an Idempotence-Key RequestHeader (alternate spelling) is not flagged`() {
+        val file = myFixture.configureByText(
+            "OrderController.kt",
+            """
+            class OrderController {
+                @PostMapping("/orders")
+                fun createOrder(@RequestHeader("Idempotence-Key") key: String, @RequestBody order: Order) { }
+            }
+            """.trimIndent(),
+        )
+        assertTrue(KotlinEndpointFinder.findAll(file).isEmpty())
+    }
+
     fun `test PutMapping is also checked`() {
         val file = myFixture.configureByText(
             "OrderController.kt",

@@ -56,7 +56,7 @@ object JavaEndpointFinder {
                 val simpleName = annotation.nameReferenceElement?.referenceName ?: continue
                 if (simpleName != "RequestHeader") continue
                 val headerName = requestHeaderNameText(annotation) ?: parameter.name
-                if (headerName?.contains("idempotency", ignoreCase = true) == true) return true
+                if (looksLikeIdempotencyHeaderName(headerName)) return true
             }
         }
         return false
@@ -65,5 +65,18 @@ object JavaEndpointFinder {
     private fun requestHeaderNameText(annotation: PsiAnnotation): String? {
         val value = annotation.findAttributeValue("value") ?: annotation.findAttributeValue("name")
         return (value as? PsiLiteralExpression)?.value as? String
+    }
+
+    /**
+     * Matches both real English spellings teams actually use for this
+     * header -- "idempotency" (Stripe's own header name, most common)
+     * and "idempotence" (the other standard spelling, seen in some
+     * in-house API conventions). Substring match, case-insensitive,
+     * same as before.
+     */
+    private fun looksLikeIdempotencyHeaderName(headerName: String?): Boolean {
+        if (headerName == null) return false
+        return headerName.contains("idempotency", ignoreCase = true) ||
+            headerName.contains("idempotence", ignoreCase = true)
     }
 }
