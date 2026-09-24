@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [0.2.1]
+
+### Fixed
+
+- Marketplace listing (`plugin.xml`) still said the header is
+  recognized only by containing "idempotency" -- stale since 0.2.0
+  added the "idempotence" spelling too. README already had the
+  correct text; `plugin.xml` now matches.
+
 ## [0.2.0]
 
 ### Added
@@ -32,7 +41,8 @@
 - 100% static PSI analysis, Java and Kotlin, no network calls, no
   telemetry. Free.
 
-[Unreleased]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.2.1...HEAD
+[0.2.1]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/GapHunterLabs/idempotency-key-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/idempotency-key-companion/commits/0.1.0
