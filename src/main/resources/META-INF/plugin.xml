@@ -15,11 +15,13 @@
         <p><b>100% static PSI analysis</b> -- matches Spring annotations
         by simple name only, so it works whether the real Spring jar is
         on the classpath or not. Java and Kotlin.</p>
-        <p>Stated honestly: v0.1 covers Spring MVC only (not JAX-RS or
+        <p>Stated honestly: covers Spring MVC only (not JAX-RS or
         other frameworks), and the idempotency-key parameter is
-        recognized by its header name containing "idempotency" -- a
-        team using a differently-named header convention isn't covered
-        yet. Real, documented limitations, not bugs.</p>
+        recognized by its header name containing "idempotency" or
+        "idempotence" (case-insensitive, both real spellings teams
+        actually use) -- a team using a differently-named header
+        convention entirely (e.g. <code>Client-Request-Token</code>)
+        isn't covered yet. Real, documented limitations, not bugs.</p>
         <p>Free. No license nags, no telemetry, no network calls.</p>
     ]]></description>
 
