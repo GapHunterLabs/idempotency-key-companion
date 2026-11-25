@@ -22,8 +22,7 @@ a code-review-only discipline today, easy to forget on a new endpoint.
   detector in this catalog.
 - **Java and Kotlin, one shared design.** The Kotlin side reads
   `KtAnnotationEntry` directly (never the Kotlin Analysis API), same
-  K1/K2-neutral discipline already proven this session in
-  `n-plus-one-query-companion`.
+  K1/K2-neutral discipline already proven in `n-plus-one-query-companion`.
 
 ## v0.1 scope — stated honestly, not exhaustively
 
